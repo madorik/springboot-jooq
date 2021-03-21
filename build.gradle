@@ -2,7 +2,10 @@ plugins {
     id 'org.springframework.boot' version '2.4.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'nu.studer.jooq' version '5.2'
 }
+
+apply from: 'jooq.gradle' // add jooq.gradle file
 
 group = 'com.jooq'
 version = '0.0.1-SNAPSHOT'
@@ -20,6 +23,10 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
+    implementation 'org.modelmapper.extenstions:modelmapper-jooq:2.3.9'
+    implementation 'org.jooq:jooq-meta'
+    jooqGenerator  'org.mariadb.jdbc:mariadb-java-client'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -28,6 +35,24 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
-    useJUnitPlatform()
+tasks {
+    test {
+        useJUnitPlatform()
+    }
+
+    compileJava {
+        dependsOn(generateDemoJooq)
+    }
+
+    generateDemoJooq {
+        dependsOn(processResources, processTestResources)
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java", "src/generated"]
+        }
+    }
 }
