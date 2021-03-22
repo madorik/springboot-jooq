@@ -22,10 +22,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-jooq'
-    implementation 'org.modelmapper.extenstions:modelmapper-jooq:2.3.9'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq:2.4.3'
     implementation 'org.jooq:jooq-meta'
     jooqGenerator  'org.mariadb.jdbc:mariadb-java-client'
+    implementation 'org.modelmapper.extensions:modelmapper-jooq:2.3.9'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
