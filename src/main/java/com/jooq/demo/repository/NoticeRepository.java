@@ -1,11 +1,14 @@
 package com.jooq.demo.repository;
 
 import com.jooq.demo.dto.NoticeDto;
+import jooq.demo_dsl.tables.JNotice;
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+import static org.jooq.impl.DSL.val;
 
 @Slf4j
 @Repository
@@ -18,7 +21,7 @@ public class NoticeRepository {
     }
 
     public List<NoticeDto> all() {
-        sample_dsl.tables.Notice N = sample_dsl.tables.Notice.NOTICE;
+        JNotice N = JNotice.NOTICE;
         return dslContext.select(
                 N.IDX,
                 N.AUTHOR,

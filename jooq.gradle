@@ -6,8 +6,8 @@ jooq {
                 jdbc {
                     driver = 'org.mariadb.jdbc.Driver'
                     url = 'jdbc:mariadb://localhost:3306'
-                    user = ''
-                    password = ''
+                    user = 'root'
+                    password = 'eoqkr'
                 }
 
                 generator {
@@ -44,10 +44,10 @@ jooq {
                         javaTimeTypes = true
                     }
                     target {
-                        packageName = 'sample_dsl'
-                        directory = 'src/generated/jooq'
+                        packageName = 'jooq.demo_dsl'
+                        directory = 'src/generated/'
                     }
-                    strategy.name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                    strategy.name = 'demo.jooq.generator.strategy.JPrefixGeneratorStrategy'
                 }
             }
         }
