@@ -16,4 +16,8 @@ public class NoticeService {
     public List<NoticeDto> getNoticeAll() {
         return noticeRepository.all();
     }
+
+    public Integer save(NoticeDto noticeDto) {
+        return noticeRepository.save(noticeDto);
+    }
 }

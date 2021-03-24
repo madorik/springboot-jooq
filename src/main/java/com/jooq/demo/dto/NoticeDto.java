@@ -12,7 +12,7 @@ public class NoticeDto {
     private Long idx;
 
     @JsonProperty("author")
-    private Long author;
+    private Integer author;
 
     @JsonProperty("title")
     private String title;
@@ -25,6 +25,10 @@ public class NoticeDto {
 
     @JsonProperty("update_date")
     private Date updateDate;
+
+    public static NoticeDto create() {
+        return new NoticeDto();
+    }
 
     @Override
     public String toString() {

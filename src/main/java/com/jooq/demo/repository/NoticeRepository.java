@@ -33,4 +33,13 @@ public class NoticeRepository {
         .from(N)
         .fetchInto(NoticeDto.class);
     }
+
+    public Integer save(NoticeDto noticeDto) {
+        JNotice N = JNotice.NOTICE;
+        return dslContext.insertInto(N)
+                .set(N.AUTHOR, noticeDto.getAuthor())
+                .set(N.TITLE, noticeDto.getTitle())
+                .set(N.CONTENT, noticeDto.getContent())
+        .execute();
+    }
 }
